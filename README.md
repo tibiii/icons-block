@@ -33,4 +33,4 @@
 
 ## License
 
-This plugin is licensed under the GPLv3 license, the same license as WordPress itself.
+This plugin is licensed under the GNU General Public License v2 or later (GPL-2.0-or-later). You can redistribute and/or modify it under the terms of the GPL.
