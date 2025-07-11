@@ -26,5 +26,11 @@
       "lineHeight": true
     }
   },
-  "style": "file:style-index.css"
+  "style": "file:style-index.css",
+  "example": {
+    "attributes": {
+      "iconType": "outline",
+      "iconName": "academicCap"
+    }
+  }
 }
