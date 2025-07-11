@@ -28,8 +28,12 @@ registerBlockType('icons-block/icons', {
         const [localType, setLocalType] = useState(iconType);
         const [localName, setLocalName] = useState(iconName);
         const [chooserOpen, setChooserOpen] = useState(!iconName);
+        const [filter, setFilter] = useState(''); // New state for filter
         const blockProps = useBlockProps();
         const iconList = Object.keys(icons[localType]);
+        const filteredIconList = filter
+            ? iconList.filter(name => name.toLowerCase().includes(filter.toLowerCase()))
+            : iconList;
 
         const updateType = (type) => {
             setLocalType(type);
@@ -70,8 +74,15 @@ registerBlockType('icons-block/icons', {
                 </InspectorControls>
                 {chooserOpen ? (
                     <>
+                        <input
+                            type="text"
+                            placeholder="Search icons..."
+                            value={filter}
+                            onChange={e => setFilter(e.target.value)}
+                            style={{ width: '100%', marginBottom: 8, padding: 8, fontSize: '1rem', boxSizing: 'border-box', border: '1px solid #eee' }}
+                        />
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxHeight: 200, overflowY: 'auto', border: '1px solid #eee', padding: 8, fontSize: '1rem' }}>
-                            {iconList.map(name => {
+                            {filteredIconList.map(name => {
                                 const IconComponent = icons[localType][name];
                                 return (
                                     <div
